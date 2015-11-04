@@ -2,6 +2,8 @@ package com.codepath.android.lollipopexercise.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.android.lollipopexercise.R;
+import com.codepath.android.lollipopexercise.activities.DetailsActivity;
 import com.codepath.android.lollipopexercise.models.Contact;
 import com.squareup.picasso.Picasso;
 
@@ -70,7 +73,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.VH> {
                     final Contact contact = (Contact)v.getTag();
                     if (contact != null) {
                         // Fire an intent when a contact is selected
-                        // Pass contact object in the bundle and populate details activity.
+                        // Pass contact object in the bundle and populate details activity
+                        Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+                        intent.putExtra(DetailsActivity.EXTRA_CONTACT, contact);
+                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                makeSceneTransitionAnimation((Activity)context, (View)ivProfile, "commonelementAvatar");
+                        v.getContext().startActivity(intent, options.toBundle());
                     }
                 }
             });
