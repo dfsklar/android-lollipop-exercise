@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
     private ContactsAdapter mAdapter;
+    private List<Contact> mContacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,10 @@ public class ContactsActivity extends AppCompatActivity {
         rvContacts.setLayoutManager(layout);
 
         // get data
-        List<Contact> contacts = Contact.getContacts();
+        mContacts = Contact.getContacts();
 
         // Create an adapter
-        mAdapter = new ContactsAdapter(ContactsActivity.this, contacts);
+        mAdapter = new ContactsAdapter(ContactsActivity.this, mContacts);
 
         // Bind adapter to list
         rvContacts.setAdapter(mAdapter);
@@ -58,6 +59,13 @@ public class ContactsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        switch (id) {
+            case R.id.btnAddNew:
+                this.mContacts.add(Contact.getRandomContact(this));
+                this.mAdapter.notifyItemInserted(this.mContacts.size());
+                break;
+        }
 
         return super.onOptionsItemSelected(item);
     }

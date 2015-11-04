@@ -39,6 +39,7 @@ public class Contact implements Serializable {
         List<Contact> contacts = new ArrayList<>();
         contacts.add(new Contact("Adam", R.drawable.contact_one, "4153508881"));
         contacts.add(new Contact("Sarah", R.drawable.contact_two, "4153508882"));
+        /*
         contacts.add(new Contact("Bob", R.drawable.contact_three, "4153508883"));
         contacts.add(new Contact("John", R.drawable.contact_four, "4153508884"));
         contacts.add(new Contact("Jill", R.drawable.contact_five, "4153508885"));
@@ -47,6 +48,7 @@ public class Contact implements Serializable {
         contacts.add(new Contact("Ryan", R.drawable.contact_eight, "4153508888"));
         contacts.add(new Contact("Jeff", R.drawable.contact_nine, "4153508889"));
         contacts.add(new Contact("Eric", R.drawable.contact_ten, "4153508890"));
+        */
         return contacts;
     }
 
